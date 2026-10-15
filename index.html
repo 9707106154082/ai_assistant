@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WorkSmart AI workplace productivity assistant prototype.">
+  <title>WorkSmart AI | Workplace Productivity Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">✦</span><span>WorkSmart <b>AI</b></span></div>
+    <p class="nav-label">WORKSPACE</p>
+    <button class="nav-item active" data-target="dashboard">⌂ <span>Dashboard</span></button>
+    <button class="nav-item" data-target="email">✉ <span>Email assistant</span></button>
+    <button class="nav-item" data-target="meetings">▤ <span>Meeting notes</span></button>
+    <button class="nav-item" data-target="tasks">✓ <span>Task planner</span></button>
+    <button class="nav-item" data-target="research">⌕ <span>Research helper</span></button>
+    <button class="nav-item" data-target="chat">☏ <span>AI chat</span></button>
+    <div class="sidebar-bottom">
+      <div class="profile-avatar">WS</div>
+      <div><strong>Workspace demo</strong><small>Prototype account</small></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand">✦ WorkSmart AI</div>
+      <div class="breadcrumb">Workspace <span>/</span> <b id="current-crumb">Dashboard</b></div>
+      <div class="top-right"><span class="status-dot"></span> Prototype mode</div>
+    </header>
+
+    <section class="page active" id="dashboard">
+      <div class="welcome">
+        <div><p class="eyebrow">YOUR PRODUCTIVITY HUB</p><h1>Work smarter, not harder.</h1>
+          <p class="muted">A practical workspace for everyday tasks, powered by AI-inspired tools.</p></div>
+        <div class="welcome-icon">✦</div>
+      </div>
+      <div class="stats">
+        <article class="stat-card"><span class="stat-icon purple">✓</span><p>Tasks tracked</p><strong id="task-count">0</strong><small>In your task list</small></article>
+        <article class="stat-card"><span class="stat-icon green">✉</span><p>Email drafts</p><strong id="email-count">0</strong><small>Created this session</small></article>
+        <article class="stat-card"><span class="stat-icon orange">▤</span><p>Meeting notes</p><strong id="meeting-count">0</strong><small>Summaries generated</small></article>
+      </div>
+      <div class="section-heading"><div><h2>Productivity tools</h2><p class="muted">Choose a tool to get started.</p></div></div>
+      <div class="tool-grid">
+        <button class="tool-card" data-target="email"><span class="tool-icon purple">✉</span><h3>Email assistant</h3><p>Draft clear, professional workplace emails.</p><span class="card-link">Create an email ↗</span></button>
+        <button class="tool-card" data-target="meetings"><span class="tool-icon green">▤</span><h3>Meeting summariser</h3><p>Turn notes into summaries and action items.</p><span class="card-link">Summarise notes ↗</span></button>
+        <button class="tool-card" data-target="tasks"><span class="tool-icon orange">✓</span><h3>Task planner</h3><p>Organise your work and track progress.</p><span class="card-link">Plan tasks ↗</span></button>
+        <button class="tool-card" data-target="research"><span class="tool-icon blue">⌕</span><h3>Research helper</h3><p>Structure research and summarise text you provide.</p><span class="card-link">Explore research ↗</span></button>
+        <button class="tool-card" data-target="chat"><span class="tool-icon pink">☏</span><h3>Workplace chatbot</h3><p>Get starter guidance for common work questions.</p><span class="card-link">Ask a question ↗</span></button>
+      </div>
+      <div class="notice"><span>ⓘ</span><div><strong>Responsible AI reminder</strong><p>Review generated content before using it. Do not enter confidential or sensitive workplace information.</p></div></div>
+    </section>
+
+    <section class="page" id="email">
+      <div class="page-heading"><p class="eyebrow">WRITE WITH CONFIDENCE</p><h1>Email assistant</h1><p class="muted">Create a professional first draft in seconds.</p></div>
+      <div class="panel">
+        <label for="email-purpose">What is the email about?</label><input id="email-purpose" placeholder="e.g. Follow up after yesterday's meeting">
+        <div class="two-col"><div><label for="email-recipient">Recipient</label><input id="email-recipient" placeholder="e.g. Project team"></div><div><label for="email-tone">Tone</label><select id="email-tone"><option>Professional</option><option>Friendly</option><option>Formal</option><option>Concise</option></select></div></div>
+        <label for="email-details">Key details to include</label><textarea id="email-details" rows="4" placeholder="Add any dates, requests, or important details..."></textarea>
+        <button class="primary" id="make-email">Generate email draft</button>
+        <div class="result-wrap hidden" id="email-result"><div class="result-head"><strong>Draft email</strong><button class="text-button" data-copy="email-output">Copy text</button></div><pre id="email-output"></pre></div>
+      </div>
+    </section>
+
+    <section class="page" id="meetings">
+      <div class="page-heading"><p class="eyebrow">TURN NOTES INTO ACTION</p><h1>Meeting summariser</h1><p class="muted">Organise your notes into a useful meeting recap.</p></div>
+      <div class="panel"><label for="meeting-title">Meeting title</label><input id="meeting-title" placeholder="e.g. Weekly project check-in">
+        <label for="meeting-notes">Meeting notes</label><textarea id="meeting-notes" rows="8" placeholder="Paste notes here. Put each point or action on a new line."></textarea>
+        <button class="primary" id="make-summary">Create summary</button>
+        <div class="result-wrap hidden" id="meeting-result"><div class="result-head"><strong>Meeting recap</strong><button class="text-button" data-copy="meeting-output">Copy text</button></div><pre id="meeting-output"></pre></div>
+      </div>
+    </section>
+
+    <section class="page" id="tasks">
+      <div class="page-heading"><p class="eyebrow">MAKE PROGRESS VISIBLE</p><h1>Task planner</h1><p class="muted">Capture priorities and keep track of what is done.</p></div>
+      <div class="panel"><form id="task-form" class="task-form"><div class="grow"><label for="task-name">Task</label><input id="task-name" required placeholder="e.g. Send project update"></div><div><label for="task-priority">Priority</label><select id="task-priority"><option>High</option><option selected>Medium</option><option>Low</option></select></div><div><label for="task-due">Due date</label><input id="task-due" type="date"></div><button class="primary add-task" type="submit">Add task</button></form>
+        <div class="task-toolbar"><strong>Your tasks</strong><span id="task-summary" class="muted">No tasks yet</span></div><div id="task-list" class="task-list"><div class="empty-state">Your tasks will appear here.</div></div>
+      </div>
+    </section>
+
+    <section class="page" id="research">
+      <div class="page-heading"><p class="eyebrow">THINK CLEARLY</p><h1>Research helper</h1><p class="muted">Structure a research question or summarise text you provide.</p></div>
+      <div class="panel"><label for="research-topic">Research topic or question</label><input id="research-topic" placeholder="e.g. How can teams reduce unnecessary meetings?">
+        <label for="research-text">Text to summarise (optional)</label><textarea id="research-text" rows="6" placeholder="Paste source material here to create a summary based on your text."></textarea>
+        <button class="primary" id="make-research">Build research brief</button>
+        <div class="result-wrap hidden" id="research-result"><div class="result-head"><strong>Research brief</strong><button class="text-button" data-copy="research-output">Copy text</button></div><pre id="research-output"></pre></div>
+      </div>
+      <div class="notice"><span>ⓘ</span><div><strong>Check your sources</strong><p>This prototype does not browse the internet or independently verify facts. Use credible sources and verify claims before citing them.</p></div></div>
+    </section>
+
+    <section class="page" id="chat">
+      <div class="page-heading"><p class="eyebrow">YOUR WORKPLACE HELPER</p><h1>AI chat</h1><p class="muted">Ask a workplace productivity question.</p></div>
+      <div class="panel chat-panel"><div id="chat-messages" class="chat-messages"><div class="chat-bubble assistant"><strong>WorkSmart assistant</strong><p>Hello! I can share general productivity suggestions. What would you like help with?</p></div></div>
+        <form id="chat-form" class="chat-form"><input id="chat-input" required placeholder="Ask about time management, teamwork..." autocomplete="off"><button class="primary" type="submit">Send ↗</button></form>
+        <p class="small muted">Prototype responses are rule-based, not generated by a live AI model.</p>
+      </div>
+    </section>
+
+    <footer>WorkSmart AI · AI Skills Program prototype · Built for learning and demonstration</footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
